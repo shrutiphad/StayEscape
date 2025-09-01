@@ -122,29 +122,6 @@ app.listen(8080, () => {
 }); 
 
 
-// app.post("/listings/:id/reviews", async (req, res, next) => {
-//   try {
-//     console.log("Review route hit 🚀");
-
-//     const listing = await Listing.findById(req.params.id);
-//     if (!listing) {
-//       console.log("❌ Listing not found");
-//       return next(new ExpressError(404, "Listing not found"));
-//     }
-
-//     const newReview = new Review(req.body.review);
-//     listing.reviews.push(newReview);
-
-//     await newReview.save();
-//     await listing.save();
-
-//     console.log("✅ Review saved for:", listing._id);
-//     res.redirect(`/listings/${listing._id}`);
-//   } catch (err) {
-//     console.error("💥 ERROR in review POST route:", err);
-//     next(err);
-//   }
-// });
 
 
 
