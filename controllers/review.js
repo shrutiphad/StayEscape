@@ -17,9 +17,9 @@ const Listing = require("../models/listing.js");
 
 
 module.exports.createReview = async (req, res) => {
-  console.log("🚀 HIT createReview");
-  console.log("✅ Review Body:", req.body);
-  console.log("🧠 Listing ID:", req.params.id);
+  console.log(" HIT createReview");
+  console.log(" Review Body:", req.body);
+  console.log("Listing ID:", req.params.id);
 
   const listing = await Listing.findById(req.params.id);
   if (!listing) {
