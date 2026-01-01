@@ -37,6 +37,10 @@ async function main(){
     await mongoose.connect(dbUrl)
 };
 
+if (!dbUrl) {
+  throw new Error("ATLASDB_URL is not defined. Check Railway Variables.");
+}
+
 app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"views"));
 app.use(express.json());
