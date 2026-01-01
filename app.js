@@ -2,7 +2,7 @@ if (process.env.NODE_ENV !="production"){
 require('dotenv').config();
 }
 
-
+const PORT = process.env.PORT || 8080;
 const express = require ("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -63,7 +63,7 @@ const sessionOptions = {
     secret : process.env.SECRET,
     resave : false,
     saveUninitialized : true,
-    cokie:{
+    cookie:{
         expires: Date.now() + 7 * 24 * 60 * 1000,
         maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
@@ -119,9 +119,16 @@ app.use((err,req,res,next) => {
 });
 
 
-app.listen(8080, () => {
-    console.log("server is working !!!");
-}); 
+// app.listen(8080, () => {
+//     console.log("server is working !!!");
+// }); 
+
+
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
 
 
 
