@@ -50,9 +50,7 @@ app.engine('ejs',ejsMate);
 app.use(express.static(path.join(__dirname,"public")));
 app.use('/uploads', express.static('uploads'));
 
-app.get("/", (req, res) => {
-  res.send("StayEscape is live ");
-});
+
 
 const store = MongoStore.create({
     mongoUrl : dbUrl,
@@ -79,9 +77,9 @@ const sessionOptions = {
 };
 
 
-// app.get("/", (req, res) => {
-//     res.redirect("/listings");
-// });
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
 
 
 
