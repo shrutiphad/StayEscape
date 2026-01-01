@@ -39,12 +39,16 @@ async function main(){
 
 app.set("view engine","ejs");
 app.set("views", path.join(__dirname,"views"));
+app.use(express.json());
 app.use(express.urlencoded ({extended :true}));
 app.use(methodOverride("_method"));
 app.engine('ejs',ejsMate);
 app.use(express.static(path.join(__dirname,"public")));
 app.use('/uploads', express.static('uploads'));
 
+app.get("/", (req, res) => {
+  res.send("StayEscape is live ");
+});
 
 const store = MongoStore.create({
     mongoUrl : dbUrl,
@@ -54,7 +58,7 @@ const store = MongoStore.create({
     touchAfter : 24*3600,
 });
 
-store.on("error", () =>{
+store.on("error", (err) =>{
     console.log("ERROR IN MONGO SESSION STORE", err);
 });
 
@@ -71,9 +75,9 @@ const sessionOptions = {
 };
 
 
-app.get("/", (req, res) => {
-    res.redirect("/listings");
-});
+// app.get("/", (req, res) => {
+//     res.redirect("/listings");
+// });
 
 
 
